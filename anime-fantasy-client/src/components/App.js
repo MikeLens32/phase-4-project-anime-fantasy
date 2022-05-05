@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './Home'
+import NavBar from './NavBar'
+import AnimeLeague from './AnimeLeague'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <NavBar/>
+        <Switch >
+          <Route path='/'>
+          <Home />
+          </Route>
+          <Route path='/sign-up'>
+        <SignUp />
+          </Route>
+          <Route path='/sign-in'>
+        <SignIn />
+          </Route>
+          <Route path='/invitation'>
+        <Invitation />
+          </Route>
+          <Route path='/anime-fantasy'>
+        <AnimeLeague />
+          </Route>
+          <Route path='/character'>
+        <AnimeLeague />
+          </Route>
+          <Route path='/character/:id'>
+        <AnimeLeague />
+          </Route>
+        </Switch>
+
+      </Router>
     </div>
   );
 }

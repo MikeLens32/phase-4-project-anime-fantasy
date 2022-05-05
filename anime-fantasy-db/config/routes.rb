@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :invitations
+  resources :characters, only: [:index, :show]
+  # resources :invitations, only: [:create]
   resources :leagues
   resources :users
 end

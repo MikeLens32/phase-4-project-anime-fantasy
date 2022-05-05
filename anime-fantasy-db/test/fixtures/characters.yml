@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  health: 1
+  attack: 1
+  defense: 1
+  stamina: 1
+  ult_move: 1
+  league: one
+
+two:
+  name: MyString
+  health: 1
+  attack: 1
+  defense: 1
+  stamina: 1
+  ult_move: 1
+  league: two
