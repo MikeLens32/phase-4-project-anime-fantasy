@@ -1,6 +1,12 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Home from './Home'
-import NavBar from './NavBar'
+import React from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Home from './Home';
+import NavBar from './NavBar';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import Character from './Character';
+import CharacterId from './CharacterId';
+import Invitation from './Invitation';
 import AnimeLeague from './AnimeLeague'
 
 function App() {
@@ -8,29 +14,15 @@ function App() {
     <div className="App">
       <Router>
         <NavBar/>
-        <Switch>
-          <Route path='/'>
-          <Home />
-          </Route>
-          {/* <Route path='/sign-up'>
-        <SignUp />
-          </Route>
-          <Route path='/sign-in'>
-        <SignIn />
-          </Route>
-          <Route path='/invitation'>
-        <Invitation />
-          </Route> */}
-          <Route path='/anime-fantasy'>
-          <AnimeLeague />
-          </Route>
-          <Route path='/character'>
-          <AnimeLeague />
-          </Route>
-          <Route path='/character/:id'>
-          <AnimeLeague />
-          </Route>
-        </Switch>
+        <Routes>
+        <Route path="/" element={<Home />} /> 
+        <Route path="/sign-up" element={<SignUp />} /> 
+        <Route path="/sign-in" element={<SignIn />} /> 
+        <Route path="/invitation" element={<Invitation />} /> 
+        <Route path="/anime-fantasy" element={<AnimeLeague />} /> 
+        <Route path="/character" element={<Character />} /> 
+        <Route path="/character/:id" element={<CharacterId />} /> 
+        </Routes>
       </Router>
     </div>
   );
