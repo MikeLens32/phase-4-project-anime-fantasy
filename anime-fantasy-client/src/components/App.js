@@ -8,11 +8,11 @@ function App() {
     <div className="App">
       <Router>
         <NavBar/>
-        <Switch >
+        <Switch>
           <Route path='/'>
           <Home />
           </Route>
-          <Route path='/sign-up'>
+          {/* <Route path='/sign-up'>
         <SignUp />
           </Route>
           <Route path='/sign-in'>
@@ -20,18 +20,17 @@ function App() {
           </Route>
           <Route path='/invitation'>
         <Invitation />
-          </Route>
+          </Route> */}
           <Route path='/anime-fantasy'>
-        <AnimeLeague />
+          <AnimeLeague />
           </Route>
           <Route path='/character'>
-        <AnimeLeague />
+          <AnimeLeague />
           </Route>
           <Route path='/character/:id'>
-        <AnimeLeague />
+          <AnimeLeague />
           </Route>
         </Switch>
-
       </Router>
     </div>
   );
