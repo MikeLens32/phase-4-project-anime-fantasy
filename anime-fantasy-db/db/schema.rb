@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_182829) do
+ActiveRecord::Schema.define(version: 2022_05_04_120347) do
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.integer "health"
+    t.integer "attack"
+    t.integer "defense"
+    t.integer "stamina"
+    t.integer "ult_move"
+    t.integer "league_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["league_id"], name: "index_characters_on_league_id"
+  end
 
   create_table "invitations", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -42,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_182829) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "characters", "leagues"
   add_foreign_key "invitations", "leagues"
   add_foreign_key "invitations", "users"
   add_foreign_key "invitations", "users", column: "member_id"

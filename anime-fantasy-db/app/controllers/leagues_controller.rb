@@ -13,6 +13,15 @@ class LeaguesController < ApplicationController
         league = League.create!(lg_params)
     end
 
+    def destroy
+        league = League.find_by_id(params[:id])
+        if league&.destroy
+            render json: league
+        else
+            render json: { errors: "Was not able to delete League"}
+        end
+    end
+
     private
 
     def lg_params
