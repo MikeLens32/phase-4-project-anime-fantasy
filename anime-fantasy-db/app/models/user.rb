@@ -8,7 +8,7 @@ class User < ApplicationRecord
     has_many :accepted_league_invites, -> {where(invite_accepted: true) }, through: :recieved_invitations, source: :league
     
     validates :username, presence: true, uniqueness: true, legnth: {in: 4..20}
-    validates :email, presence: true
+    validates :email, email: {mode: :strict, require_fqdn: true}, presence: true
     validates :password, legnth: {in: 6..20}
 
     enum role: %i(client admin superadmin)
