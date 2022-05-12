@@ -16,8 +16,8 @@ function App() {
         <NavBar/>
         <Routes>
         <Route path="/" element={<Home />} /> 
-        <Route path="/sign-up" element={<SignUp />} /> 
-        <Route path="/sign-in" element={<SignIn />} /> 
+        {/* <Route path="/sign-up" element={<SignUp />} /> 
+        <Route path="/sign-in" element={<SignIn />} />  */}
         <Route path="/invitation" element={<Invitation />} /> 
         <Route path="/anime-fantasy" element={<AnimeLeague />} /> 
         <Route path="/character" element={<Character />} /> 

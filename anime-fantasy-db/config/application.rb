@@ -36,5 +36,10 @@ module AnimeFantasy
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    
+    config.middleware.use ActiveDispatch::Cookies
+    config.middleware.use ActiveDispatch::Session::CookiesStore
+
+    config.action_dispatch.cookies_same_site_protection = :strict
   end
 end

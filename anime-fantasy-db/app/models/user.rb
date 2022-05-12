@@ -6,6 +6,12 @@ class User < ApplicationRecord
     #active records is going to check all the leagues to see which creator id links what your looking for
     has_many :pending_league_invites, -> {where(invite_accepted: false) }, through: :recieved_invitations, source: :league
     has_many :accepted_league_invites, -> {where(invite_accepted: true) }, through: :recieved_invitations, source: :league
+    
+    validates :username, presence: true, uniqueness: true, legnth: {in: 4..20}
+    validates :email, presence: true
+    validates :password, legnth: {in: 6..20}
+
+    enum role: %i(client admin superadmin)
 
     has_secure_password
 end
