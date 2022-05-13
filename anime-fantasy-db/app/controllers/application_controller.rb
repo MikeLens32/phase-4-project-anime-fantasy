@@ -2,6 +2,11 @@ class ApplicationController < ActionController::API
     include ActionController::Cookies
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
     rescue_from ActiveRecord::RecordInvalid, with: :no_route
+    before_action :authorized
+
+    def authorize #attaching this to the before_action macro will have this guard clause run before all user actions
+        return render json: {error: "Not authorized"}, status: :unathorized unless sessions.include? :user_id
+    end
 
     private
 

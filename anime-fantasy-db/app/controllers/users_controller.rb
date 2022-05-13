@@ -1,17 +1,36 @@
 class UsersController < ApplicationController
-    before_action :action
+    wrap_parameters format:[]
+
     def show
-        user = User.find(id: session[:id])
-        render json: user
+        current_user = User.find_by(session[:user_id])
+        render json: current_user
     end
 
     def create
-        user = User.create(username: params[:username], email: params[:email],)
+        user = User.create!(user_params)
+        render json: user, status: :created
+    end
+
+    def update
+        user = User.find_by(id: session[:id])
+        user.update(user_params)
+        render json: user
+    end
+
+    def destroy
+        find_user
+        @user&.destroy
+        render json: @user
     end
 
     private
 
-    def authorize
-        return render json: {error: "Not authorized"}, status: :unathorized unless sessions.include? :user_id
+    def find_user #DRY the code with a simple method name
+        @user = User.find(id: session[:id])
     end
+
+    def user_params
+        params.permit(:username, :email, :password)
+    end
+
 end

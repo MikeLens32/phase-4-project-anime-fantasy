@@ -1,4 +1,5 @@
 class CharactersController < ApplicationController
+    wrap_parameters format:[]
 
     def index 
         characters = Character.all
