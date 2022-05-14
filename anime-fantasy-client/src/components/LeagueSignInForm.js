@@ -1,38 +1,61 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const LeagueSignInForm = () => {
-
-    const [userForm, setUserForm] = useState({
+const LeagueSignInForm = ({ loggedOn }) => {
+    const [loginUser, setLoginUser] = useState({
         username: '',
-        email: '',
         password: ''
     })
 
-    function handleChange(e) {
-        setUserForm({
-            ...userForm,
-            [e.target.name]:e.target.value
+    function handleChange(e){
+        setLoginUser({
+            ...loginUser,
+            [e.target.name]:e.target.value,
         })
     }
 
-    // const history = useHistory()
+    const history = useNavigate()
 
-    // function handleSignInSwitch() {
-    //     history.push('/sign-up')
+    function handleSumbit(e){
+        e.preventDefault()
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginUser)
+        })
+            .then((r) => {
+                if(r.ok){
+                    r.json()
+                    .then((userData) => loggedOn(userData))
+                } else{
+                    r.json().then(obj => alert(obj.error))
+                }
+            } )
+             history.push('/anime-fantasy')
+    }
+
+    // function handleSignUp(e) {
+    //     e.preventDefault()
+    //     history.push('/signup')
     // }
 
     return (
         <div>
-            <form>
-                <h1>Sign In</h1>
+            <form onSumbit={handleSumbit}>
+                <h2>Login</h2>
                 <label>Username</label>
-                <input  name="username" onChange={handleChange} value={userForm.username}/>
-                <label>Email</label>
-                <input  name="email" onChange={handleChange} value={userForm.email}/>
+                <input class="form-input px-4 py-3 rounded-full" name='username' onChange={handleChange} value={loginUser.name} type='text'/>
+                <br/>
                 <label>Password</label>
-                <input  name="password" onChange={handleChange} value={userForm.password}/>
-                <input type="submit" value="Sign Up" />
+                <input name='password' onChange={handleChange} value={loginUser.password} type='password'/>
+                <br/>
+                <button type='submit'>Login</button>
+                <br/>
+                <label>If You Need to Sign Up</label>
+                <button >Sign Up</button>
             </form>
         </div>
     )

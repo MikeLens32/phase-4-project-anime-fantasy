@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AnimeFantasyContainer from '../container/AnimeFantasyContainer'
-import SignIn from './SignIn'
+import LeagueSignInForm from './LeagueSignInForm'
 
 const AnimeLeague = () => {
 
@@ -8,18 +8,19 @@ const AnimeLeague = () => {
 
     useEffect(() => {
         fetch('/me')
-        .then(r =>{
+        .then((r) =>{
             if(r.ok){
                 r.json().then(user => setCurrentUser(user))
             }
         })
-    }, [])
+    },[])
 
-    if(!currentUser) return <SignIn loggedOn={setCurrentUser}/>
+    if(!currentUser) return <LeagueSignInForm loggedOn={setCurrentUser}/>
     
     return (
         <div>
             <h1>Anime Fantansy</h1>
+            <h3>Welcome {currentUser.username}</h3>
             <AnimeFantasyContainer />
         </div>
     )
