@@ -44,7 +44,7 @@ const LeagueSignInForm = ({ loggedOn }) => {
 
     return (
         <div className='flex flex-wrap justify-center'>
-            <form className='shadow-md bg-whitee round px-8 pt-6 pb-8 mb-4 mt-20' onSumbit={handleSumbit}>
+            <form className='shadow-md bg-white round px-8 pt-6 pb-8 mb-4 mt-20' onSumbit={handleSumbit}>
                 <h2>Login</h2>
                 <label className='black text-gray-700 tet-sm font-bold md-2' >Username</label>
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='username' onChange={handleChange} value={loginUser.name} type='text' placeholder='Username'/>
