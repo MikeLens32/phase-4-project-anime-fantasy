@@ -11,8 +11,8 @@ import AnimeLeague from './AnimeLeague'
 
 function App() {
   return (
-    <div className="App">
-        <NavBar/>
+    <div >
+        <NavBar />
         <Routes>
         <Route path="/" element={<Home />} />  
         <Route path="/invitation" element={<Invitation />} /> 

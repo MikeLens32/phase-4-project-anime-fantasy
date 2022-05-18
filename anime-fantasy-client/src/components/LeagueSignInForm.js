@@ -43,19 +43,21 @@ const LeagueSignInForm = ({ loggedOn }) => {
     // }
 
     return (
-        <div>
-            <form onSumbit={handleSumbit}>
+        <div className='flex flex-wrap justify-center'>
+            <form className='shadow-md bg-whitee round px-8 pt-6 pb-8 mb-4 mt-20' onSumbit={handleSumbit}>
                 <h2>Login</h2>
-                <label>Username</label>
-                <input class="form-input px-4 py-3 rounded-full" name='username' onChange={handleChange} value={loginUser.name} type='text'/>
+                <label className='black text-gray-700 tet-sm font-bold md-2' >Username</label>
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='username' onChange={handleChange} value={loginUser.name} type='text' placeholder='Username'/>
                 <br/>
-                <label>Password</label>
-                <input name='password' onChange={handleChange} value={loginUser.password} type='password'/>
+                <label className='black text-gray-700 tet-sm font-bold md-2' >Password</label>
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='password' onChange={handleChange} value={loginUser.password} type='password' placeholder='********'/>
                 <br/>
-                <button type='submit'>Login</button>
-                <br/>
-                <label>If You Need to Sign Up</label>
-                <button >Sign Up</button>
+                <div className='flex items-center justify-between mt-5'>
+                    <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' >Login</button>
+                    <label >Need to Sign Up?</label>
+                    <h4 className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'>Sign Up</h4>
+                </div>
+                
             </form>
         </div>
     )

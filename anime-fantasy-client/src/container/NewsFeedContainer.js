@@ -4,7 +4,7 @@ import NewsList from '../components/NewsList'
 const NewsFeedContainer = () => {
 
     return (
-        <div>
+        <div >
             <NewsList />
         </div>
     )
