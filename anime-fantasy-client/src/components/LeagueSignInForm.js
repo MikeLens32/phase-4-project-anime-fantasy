@@ -37,14 +37,10 @@ const LeagueSignInForm = ({ loggedOn }) => {
              history.push('/anime-fantasy')
     }
 
-    // function handleSignUp(e) {
-    //     e.preventDefault()
-    //     history.push('/signup')
-    // }
 
     return (
-        <div className='flex flex-wrap justify-center'>
-            <form className='shadow-md bg-white round px-8 pt-6 pb-8 mb-4 mt-20' onSumbit={handleSumbit}>
+        <div className='h-screen bg-gradient-to-r from-white to-cyan-500 flex flex-wrap justify-center'>
+            <form className='shadow-md bg-white round box-border h-64 w-96 p-4 px-8 pt-6 pb-8 mb-4 mt-20' onSumbit={handleSumbit}>
                 <h2>Login</h2>
                 <label className='black text-gray-700 tet-sm font-bold md-2' >Username</label>
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='username' onChange={handleChange} value={loginUser.name} type='text' placeholder='Username'/>
@@ -56,6 +52,7 @@ const LeagueSignInForm = ({ loggedOn }) => {
                     <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' >Login</button>
                     <label >Need to Sign Up?</label>
                     <h4 className='inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800'>Sign Up</h4>
+                    {/* pass loggedOn so I can use it to set the user for sessions */}
                 </div>
                 
             </form>
