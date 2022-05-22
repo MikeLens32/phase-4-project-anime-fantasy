@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     wrap_parameters format:[]
+    skip_before_action :authorized, only: [:show, :create]
 
     def show
         render json: @current_user
@@ -7,7 +8,12 @@ class UsersController < ApplicationController
 
     def create
         user = User.create!(user_params)
-        render json: user, status: :created
+        if user.valid?
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: {errors: user.errors.full_message.to_sentence}, status: :unprocessable_entity
+        end
     end
 
     def update

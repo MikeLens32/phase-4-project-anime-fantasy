@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
     private
 
     def current_user
-        @current_user ||= User.find(session[:user_id])
+        @current_user ||= User.find_by(id: session[:user_id])
     end
 
     def authorized #attaching this to the before_action macro will have this guard clause run before all user actions
