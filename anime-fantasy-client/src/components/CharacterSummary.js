@@ -1,13 +1,20 @@
 import React from 'react'
+import CharacterBars from './CharacterBars'
 
-const CharacterSummary = ({ user = false }) => {
+const CharacterSummary = ({ user = false,  name, damage, health, stamina}) => {
 
-    const red = '#821200'
-    const blue = '#1953cb'
+    const darkGray = '#52525b'
+    const liteGray = '#a1a1aa'
 
     return (
-        <div className=''>
-            Character Summary
+        <div style={{ background: user ? darkGray : liteGray }} className='main rounded-lg flex flex-col justify-between shadow-md round box-border w-80 h-34 p-4 px-8 pt-6 border'>
+            <div className='info flex justify-between w-80'>
+                <div className='name text-lg'>{name}</div>
+            </div>
+            <div className='health text-sm'>
+                <CharacterBars label='HP' value={damage} maxValue={health} />
+                <div className='stamina'>{stamina}</div>
+            </div>
         </div>
     )
 }

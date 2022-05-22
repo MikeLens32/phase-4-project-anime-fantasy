@@ -5,7 +5,7 @@ const NewsCards = () => {
     return (
         <div className='grid grid-cols-4'>
             {NewsInfoDb.map((infoCard) => (
-                <div className='w-full min-h-screen flex justify-center items-center'>
+                <div className='h-screen w-full  flex justify-center items-center'>
                     <div className='rounded w-60 p-2 bg-white round-xl hover:-translate-y-3 duration-500 drop-shadow-lx hover:shadow-2x1 '>
                         <img className='round-lg h-40 object-cover ' src={infoCard.img} alt={infoCard.alt} />
                         <div className='font-bold text-lg'>

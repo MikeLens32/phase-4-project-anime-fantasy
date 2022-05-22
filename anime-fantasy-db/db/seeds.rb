@@ -15,11 +15,11 @@ Character.destroy_all
 
 puts "----Creating Users----"
 #User.create(username: 'kingofkings', email: 'mike@gmail.com', password: 'MineNotYours')
-mike = User.create(username: 'kingofkings', email: 'mike@gmail.com', password: 'Green')
-jared = User.create(username: 'basetankgod', email: 'jared@gmail.com', password: 'Funny')
-larry = User.create(username: 'thabigslo', email: 'larry@gmail.com', password: 'Sondey')
-ovan = User.create(username: 'onemagic19', email: 'ovan@gmail.com', password: 'Goat')
-rod = User.create(username: 'roddygeez', email: 'rod@gmail.com', password: 'Sony')
+mike = User.create(username: 'kingofkings', user_email: 'mike@gmail.com', password: 'Mike123')
+jared = User.create(username: 'basetankgod', user_email: 'jared@gmail.com', password: 'Jared123')
+larry = User.create(username: 'thabigslo', user_email: 'larry@gmail.com', password: 'Larry123')
+ovan = User.create(username: 'onemagic19', user_email: 'ovan@gmail.com', password: 'Ovan123')
+rod = User.create(username: 'roddygeez', user_email: 'rod@gmail.com', password: 'Rod123')
 
 
 puts "----Creating Leagues----"
