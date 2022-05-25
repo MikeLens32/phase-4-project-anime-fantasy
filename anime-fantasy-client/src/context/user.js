@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MessageContext } from './message'
 
@@ -17,10 +17,10 @@ function UserProvider({children}) {
                 setUser(data)
             } else {
                 const errorObj = await resp.json()
-                setMessage({message :errorObj.error, color: 'red'})
+                setMessage({message: errorObj.errors, color: 'red'})
             }
         } catch (e) {
-        setMessage(e.message)
+        setMessage({message: e.message, color: 'red'})
         }
     }, [setMessage])
 
@@ -38,14 +38,14 @@ function UserProvider({children}) {
             if (resp.status === 202) {
                 const data = await resp.json()
                 setUser(data)
-                history.push('/home')
+                return true
             } else {
                 debugger
                 const errorObj = await resp.json()
-                setMessage(errorObj.error)
+                setMessage({message: errorObj.errors, color: 'red'})
             }
         } catch (e) {
-            setMessage(e.message)
+            setMessage({message: e.message, color: 'red'})
         } 
      }
 

@@ -47,7 +47,7 @@ const LeagueSignInForm = () => {
         e.preventDefault()
         if([userObjIn.username, userObjIn.password].some(val => val.trim() === '')) {
             setMessage({message: "You must fill in all the information please!", color: 'red'})
-            history('/home')
+            history.push('/home')
         }
         login(userObjIn)
     }
