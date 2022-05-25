@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import {Route, Routes} from 'react-router-dom';
+import { UserContext } from '../context/user';
 import Home from './Home';
 import NavBar from './NavBar';
-// import LeagueSignInForm from './LeagueSignInForm';
-// import LeagueSignUpForm from './LeagueSignUpForm';
-// import Character from './Character';
-// import CharacterId from './CharacterId';
-import Invitation from './Invitation';
-import AnimeLeague from './AnimeLeague'
+import LeagueSignInForm from './LeagueSignInForm';
+import ALHomePage from './ALHomePage';
 
 function App() {
+
+  const {getCurrentUser, user} = useContext(UserContext)
+
+  useEffect(() => {
+    getCurrentUser()
+  }, [user])
+
   return (
     <div >
         <NavBar />
         <Routes>
-        <Route path="/" element={<Home />} />  
-        <Route path="/invitation" element={<Invitation />} /> 
-        <Route path="/anime-fantasy" element={<AnimeLeague />} />  
+        <Route path="/" element={<LeagueSignInForm />} />  
+        <Route path="/home" element={<Home />} /> 
+        <Route path="/anime-fantasy" element={<ALHomePage />} />  
         </Routes>
     </div>
   );

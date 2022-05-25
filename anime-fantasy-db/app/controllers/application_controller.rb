@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
     rescue_from ActiveRecord::RecordInvalid, with: :no_route
     before_action :authorized
+    wrap_parameters format: []
 
     
 

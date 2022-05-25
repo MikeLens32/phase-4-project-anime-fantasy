@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
+import { Redirect } from 'react-router-dom';
 import AnimeFantasyContainer from '../container/AnimeFantasyContainer';
-import LeagueSignInForm from './LeagueSignInForm'
+// import LeagueSignInForm from './LeagueSignInForm'
 
 const AnimeLeague = () => {
 
-    const [currentUser, setCurrentUser] = useState('')
-
-    if(!currentUser) return <LeagueSignInForm loggedOn={setCurrentUser}/>
-
+    const { user } = useContext(UserContext)
+    if (!user) return <Redirect to='/'/>
     // {currentUser.username}
     // ^^ got next to welcome for the user's username to appear on login
 

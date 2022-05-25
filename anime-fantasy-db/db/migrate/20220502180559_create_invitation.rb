@@ -4,7 +4,6 @@ class CreateInvitation < ActiveRecord::Migration[6.1]
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :league, null: false, foreign_key: true
       t.boolean :invite_accepted
-      t.datetime :draft_time
 
       t.timestamps
     end

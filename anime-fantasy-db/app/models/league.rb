@@ -4,13 +4,5 @@ class League < ApplicationRecord
   has_many :users, through: :invitations
   has_many :league_characters
   has_many :characters, through: :league_characters
-
-  validate :end_date_in_future
-
-  def end_date_in_future
-    if !!end_date && end_date <= DateTime.current
-      errors.add(:end_date, :time_warp, message: "End date should be at a later date than draft date.")
-    end
-  end
   
 end

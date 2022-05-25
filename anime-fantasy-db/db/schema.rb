@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_220325) do
     t.integer "user_id", null: false
     t.integer "league_id", null: false
     t.boolean "invite_accepted"
-    t.datetime "draft_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id", null: false
@@ -47,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_220325) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
-    t.datetime "end_date"
     t.integer "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -56,7 +54,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_220325) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "user_email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

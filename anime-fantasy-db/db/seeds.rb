@@ -15,18 +15,18 @@ Character.destroy_all
 
 puts "----Creating Users----"
 #User.create(username: 'kingofkings', email: 'mike@gmail.com', password: 'MineNotYours')
-mike = User.create(username: 'kingofkings', user_email: 'mike@gmail.com', password: 'Mike123')
-jared = User.create(username: 'basetankgod', user_email: 'jared@gmail.com', password: 'Jared123')
-larry = User.create(username: 'thabigslo', user_email: 'larry@gmail.com', password: 'Larry123')
-ovan = User.create(username: 'onemagic19', user_email: 'ovan@gmail.com', password: 'Ovan123')
-rod = User.create(username: 'roddygeez', user_email: 'rod@gmail.com', password: 'Rod123')
+mike = User.create(username: 'kingofkings', password: 'Mike123')
+jared = User.create(username: 'basetankgod', password: 'Jared123')
+larry = User.create(username: 'thabigslo', password: 'Larry123')
+ovan = User.create(username: 'onemagic19', password: 'Ovan123')
+rod = User.create(username: 'roddygeez', password: 'Rod123')
 
 
 puts "----Creating Leagues----"
 #League.create(creator_id: 1, name:'My Wakanda Academia', end_date:  'Sat, 09 JUL 2022')
 # create member id
-mwa = League.create(creator: mike, name:'My Wakanda Academia', end_date:  'Sat, 09 JUL 2022')
-hnc = League.create(creator: larry, name:'Hound Ninja Chat', end_date:  'Sat, 09 JUL 2022')
+mwa = League.create(creator: mike, name:'My Wakanda Academia')
+hnc = League.create(creator: larry, name:'Hound Ninja Chat')
 
 
 puts "----Creating Charaters & League Associations----"
@@ -94,10 +94,10 @@ LeagueCharacter.create(character: koro_sensie, league: mwa)
 LeagueCharacter.create(character: koro_sensie, league: hnc)
 
 
-# puts "----Creating Invitations----"
-#Invitation.create(user_id: 1, league_id: 1, member_id: 2, invite_accepted: true, draft_time: 'Sat, 18 JUN 2022')
-# Invitation.create(user: mike, league: mwa, member: jared, invite_accepted: true, draft_time: 'Sat, 18 JUN 2022')
-# Invitation.create(user: mike, league: mwa, member: larry, invite_accepted: true, draft_time: 'Sat, 18 JUN 2022')
+puts "----Creating Invitations----"
+# Invitation.create(user_id: 1, league_id: 1, member_id: 2, invite_accepted: true)
+Invitation.create(user: mike, league: mwa, member: jared, invite_accepted: true)
+Invitation.create(user: mike, league: mwa, member: larry, invite_accepted: true)
 
 
 # puts "Creating News Feed----"
