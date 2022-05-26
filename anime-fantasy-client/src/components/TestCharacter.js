@@ -1,6 +1,6 @@
-import goku from '../assets/Characers-05.png';
-import rimuru from '../assets/Characers-15.png'
-import kaneki from '../assets/Characers-07.png'
+import goku from '../assets/Goku';
+import rimuru from '../assets/Rimuru'
+import kaneki from '../assets/Kaneki'
 
 export const userStats = {
     name: 'Goku',

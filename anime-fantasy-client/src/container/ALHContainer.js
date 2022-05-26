@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CreateLeague from '../components/CreateLeague'
 
 export const ALHContainer = () => {    
 
-    const history = useNavigate()
+  const history = useNavigate()
+  const [ league, setLeague] = useState({})
+
+  useEffect(() => {
+    fetch(`/leagues/${league.id}`)
+    .then(r => r.json())
+    .then((leagueData) => setLeague(leagueData))
+  }, [])
 
   return (
     <div >
@@ -14,7 +21,7 @@ export const ALHContainer = () => {
         </div>
 
         <div className='shadow-md bg-white rounded-lg box-border h-200 w-64 p-4 px-8 pt-6 pb-8 my-12'>
-          <div className='Display Leagues grid-cols-3'>
+          <div className='Display Leagues grid-cols-4'>
             <div className='Card for League information'/>
           </div>
         </div>

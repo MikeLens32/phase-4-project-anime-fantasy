@@ -15,7 +15,7 @@ function App() {
   }, [])
 
   return (
-    <div className='h-screen w-full bg-gradient-to-r from-white to-cyan-500' >
+    <div className='h-screen w-full justify-center bg-gradient-to-r from-white to-cyan-500' >
         <NavBar />
         <Routes>
         <Route path="/" element={<LeagueSignInForm />} />  
