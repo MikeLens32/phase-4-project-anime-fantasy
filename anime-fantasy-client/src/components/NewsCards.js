@@ -3,7 +3,7 @@ import NewsInfoDb from './NewsInfoDb'
 const NewsCards = () => {
 
     return (
-        <div className='grid grid-cols-4'>
+        <div className='grid grid-cols-3'>
             {NewsInfoDb.map((infoCard) => (
                 <div className='h-screen w-full  flex justify-center items-center'>
                     <div className='rounded w-60 p-2 bg-white round-xl hover:-translate-y-3 duration-500 drop-shadow-lx hover:shadow-2x1 '>

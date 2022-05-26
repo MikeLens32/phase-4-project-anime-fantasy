@@ -8,14 +8,14 @@ import ALHomePage from './ALHomePage';
 
 function App() {
 
-  const {getCurrentUser, user} = useContext(UserContext)
+  const {getCurrentUser} = useContext(UserContext)
 
   useEffect(() => {
     getCurrentUser()
-  }, [user])
+  }, [])
 
   return (
-    <div >
+    <div className='h-screen w-full bg-gradient-to-r from-white to-cyan-500' >
         <NavBar />
         <Routes>
         <Route path="/" element={<LeagueSignInForm />} />  

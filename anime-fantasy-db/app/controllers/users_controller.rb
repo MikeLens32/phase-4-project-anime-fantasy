@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: user.errors.full_message.to_sentence}, status: :unprocessable_entity
+            render json: { error: user.errors.full_message.to_sentence }, status: :unprocessable_entity
         end
     end
 

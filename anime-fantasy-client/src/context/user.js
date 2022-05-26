@@ -17,7 +17,7 @@ function UserProvider({children}) {
                 setUser(data)
             } else {
                 const errorObj = await resp.json()
-                setMessage({message: errorObj.errors, color: 'red'})
+                setMessage({message: errorObj.error, color: 'red'})
             }
         } catch (e) {
         setMessage({message: e.message, color: 'red'})
@@ -35,14 +35,16 @@ function UserProvider({children}) {
                 },
                 body: JSON.stringify(userDetail)
             })
-            if (resp.status === 202) {
+            if (resp.status === 201) {
                 const data = await resp.json()
+                console.log(data)
                 setUser(data)
+                history('/home')
                 return true
             } else {
                 debugger
                 const errorObj = await resp.json()
-                setMessage({message: errorObj.errors, color: 'red'})
+                setMessage({message: errorObj.error, color: 'red'})
             }
         } catch (e) {
             setMessage({message: e.message, color: 'red'})

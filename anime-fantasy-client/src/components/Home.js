@@ -9,8 +9,7 @@ const Home = () => {
     if (!user) return <Navigate to='/'/>
     
     return (
-        <div className='h-full bg-gradient-to-r from-white to-cyan-500'>
-            <h1>Home</h1>
+        <div className='h-screen w-full bg-gradient-to-r from-white to-cyan-500'>
             <div >
                 <NewsFeedContainer />
             </div>

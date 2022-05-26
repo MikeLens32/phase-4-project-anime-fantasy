@@ -7,10 +7,16 @@ export const ALHContainer = () => {
     const history = useNavigate()
 
   return (
-    <div>
-        <div className='shadow-md bg-white round box-border h-64 w-64 p-4 px-8 pt-6 pb-8 mb-4 mt-20 items-centered' onSubmit={(e) => history(<CreateLeague />)}>
+    <div >
+        <div className='shadow-md bg-white rounded-lg box-border h-28 w-52 p-4 px-8 pt-6 pb-8 ' >
             <div>Create New League</div>
-            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' >Start</button>
+            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' onSubmit={(e) => history(<CreateLeague />)}>Start</button>
+        </div>
+
+        <div className='shadow-md bg-white rounded-lg box-border h-200 w-64 p-4 px-8 pt-6 pb-8 my-12'>
+          <div className='Display Leagues grid-cols-3'>
+            <div className='Card for League information'/>
+          </div>
         </div>
         <div >
 

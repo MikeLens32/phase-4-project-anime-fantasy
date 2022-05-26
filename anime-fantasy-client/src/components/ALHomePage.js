@@ -5,11 +5,11 @@ import { ALHContainer } from '../container/ALHContainer'
 
 const ALHomePage = () => {
 
-  const { user } = useContext(UserContext)
-  if (!user) return <Navigate to='/'/>
+  // const { user } = useContext(UserContext)
+  // if (!user) return <Navigate to='/'/>
     
   return (
-    <div className='h-screen w-full bg-gradient-to-r from-white to-cyan-500'>
+    <div className='mx-10 my-10'>
         <ALHContainer />
     </div>
   )
