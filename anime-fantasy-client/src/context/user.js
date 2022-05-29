@@ -35,7 +35,7 @@ function UserProvider({children}) {
                 },
                 body: JSON.stringify(userDetail)
             })
-            if (resp.status === 201) {
+            if (resp.status === 200) {
                 const data = await resp.json()
                 console.log(data)
                 setUser(data)
@@ -79,7 +79,6 @@ function UserProvider({children}) {
              const resp = await fetch('/signout', {
                  method: 'DELETE',
              })
-             debugger
              setUser(null)
              history.push('/')
         } catch (e) {

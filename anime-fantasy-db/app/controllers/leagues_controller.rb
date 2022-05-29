@@ -2,7 +2,6 @@ class LeaguesController < ApplicationController
 
     def show
         league = League.find_by(id: params[:id])
-        byebug
         render json: league
     end
     

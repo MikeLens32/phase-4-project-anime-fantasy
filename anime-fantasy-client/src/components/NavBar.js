@@ -5,7 +5,7 @@ import  { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
 
-    const {user} = useContext(UserContext)
+    const { user, signout} = useContext(UserContext)
 
     return (
         <div className='w-full h-10 bg-blue-400 text-gray-200 flex flex-row justify-between items-center'>
@@ -13,14 +13,22 @@ export default function NavBar() {
             <ul className='memu-list flex flex-row text-xs font-bold px-2'>
                 <li className='menu-list-item px-2'>
                     <NavLink to='/home'>  
-                    Home
+                        Home
                     </NavLink>
                 </li>
                 <li className='menu-list-item px-2'>
                     <NavLink to='/anime-fantasy'>  
-                    League
+                        League
                     </NavLink> 
                 </li>
+                {user ? (
+                    <li className='menu-list-item px-2'>
+                    <button onClick={signout}>  
+                        Logout
+                    </button> 
+                </li>
+                ) : null}
+                
             </ul>
 
             <button className='1g:hidden menu-button'>

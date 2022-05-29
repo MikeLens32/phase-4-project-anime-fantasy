@@ -5,7 +5,7 @@ import CreateLeague from '../components/CreateLeague'
 export const ALHContainer = () => {    
 
   const history = useNavigate()
-  const [ league, setLeague] = useState({})
+  const [ league, setLeague ] = useState({})
 
   useEffect(() => {
     fetch(`/leagues/${league.id}`)

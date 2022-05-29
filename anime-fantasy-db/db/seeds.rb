@@ -98,6 +98,8 @@ puts "----Creating Invitations----"
 # Invitation.create(user_id: 1, league_id: 1, member_id: 2, invite_accepted: true)
 Invitation.create(user: mike, league: mwa, member: jared, invite_accepted: true)
 Invitation.create(user: mike, league: mwa, member: larry, invite_accepted: true)
+Invitation.create(user: mike, league: mwa, member: ovan, invite_accepted: true)
+Invitation.create(user: mike, league: mwa, member: rod, invite_accepted: true)
 
 
 # puts "Creating News Feed----"

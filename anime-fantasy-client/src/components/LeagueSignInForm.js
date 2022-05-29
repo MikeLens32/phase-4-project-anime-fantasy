@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/user'
 import { MessageContext } from '../context/message'
 
 const LeagueSignInForm = () => {
 
-    const { setUser, login, signup} = useContext(UserContext)
+    const { user, login, signup } = useContext(UserContext)
     const { setMessage } = useContext(MessageContext)
     const [ toggle, setToggle ] = useState(false)
     const[ userObjIn, setUserObjIn ] = useState({
@@ -18,10 +18,14 @@ const LeagueSignInForm = () => {
         password: '',
         passwordConfirmation: ''
     })
-    // const [ thisUser, setThisUser ] = useState({
-    //     username: '',
-    //     password:''
-    // })
+
+    const history = useNavigate()
+
+    useEffect(() => {
+        if (user){
+            return history('/home')
+        }
+    }, [user, history])
 
     function handleToggle(){
         setToggle(!toggle)
@@ -41,14 +45,16 @@ const LeagueSignInForm = () => {
         })
     }
 
-    const history = useNavigate()
-
     function handleLogin(e){
         e.preventDefault()
         if([userObjIn.username, userObjIn.password].some(val => val.trim() === '')) {
             setMessage({message: "You must fill in all the information please!", color: 'red'})
         }
-        login(userObjIn)
+        const didItWork = login(userObjIn)
+        if (didItWork) {
+            setMessage({message: 'Successfully logged in!', color: 'green'})
+            history('/home')
+        }
     }
 
     function handleSignUp(e){
