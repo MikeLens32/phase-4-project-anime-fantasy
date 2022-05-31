@@ -1,3 +1,6 @@
 class LeagueSerializer < ActiveModel::Serializer
-  attributes :id, :creator_id, :character_id, :member_id
+  attributes :id, :name, :creator_id
+
+  has_many :invitations, serializer: InvitationSerializer
+  has_many :league_characters
 end

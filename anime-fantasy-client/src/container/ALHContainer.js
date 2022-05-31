@@ -8,7 +8,7 @@ export const ALHContainer = () => {
   const [ league, setLeague ] = useState({})
 
   useEffect(() => {
-    fetch(`/leagues/${league.id}`)
+    fetch('/league_characters')
     .then(r => r.json())
     .then((leagueData) => setLeague(leagueData))
   }, [])

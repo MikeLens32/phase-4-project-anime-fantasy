@@ -1,5 +1,16 @@
 class LeaguesController < ApplicationController
+    skip_before_action :authorized, only: [:index]
 
+    def index
+        if params[:league_id]
+            user = User.find_by(id: session[:id])
+            render json: user.leagues
+        else 
+            leagues = League.all
+            render json: leagues
+        end
+    end
+    
     def show
         league = League.find_by(id: params[:id])
         render json: league
@@ -26,11 +37,11 @@ class LeaguesController < ApplicationController
     private
 
     def lg_ch_params
-        params.permit(:league_id, :character_id)
+        params.require(:league).permit(:id, :creator_id, :member_id)
     end
 
     def lg_params
-        params.permit(:name, :end_date, :creator_id)
+        params.permit(:name, :creator_id, :member_id)
     end
 
 end
