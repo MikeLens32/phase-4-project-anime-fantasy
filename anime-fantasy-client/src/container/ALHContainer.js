@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CreateLeague from '../components/CreateLeague'
+import LeagueCard from '../components/LeagueCard';
 
 export const ALHContainer = () => {    
 
   const history = useNavigate()
-  const [ league, setLeague ] = useState({})
+  const [ league, setLeague ] = useState([])
+  // const [ currentLeague, setCurrentLeague ] = useState(1)
+
 
   useEffect(() => {
-    fetch('/league_characters')
+    fetch(`/leagues`)
     .then(r => r.json())
     .then((leagueData) => setLeague(leagueData))
   }, [])
+  console.log(league)
+
+  const filtered = league.filter(l => l.id === 1)
+  console.log('Filtered',filtered)
 
   return (
-    <div >
+    <div className='bg-gradient-to-r from-white to-cyan-500'>
         <div className='shadow-md bg-white rounded-lg box-border h-28 w-52 p-4 px-8 pt-6 pb-8 ' >
             <div>Create New League</div>
-            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' onSubmit={(e) => history(<CreateLeague />)}>Start</button>
+            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' onClick={(e) => history('/create-league')}>Start</button>
         </div>
 
-        <div className='shadow-md bg-white rounded-lg box-border h-200 w-64 p-4 px-8 pt-6 pb-8 my-12'>
+        <div >
           <div className='Display Leagues grid-cols-4'>
-            <div className='Card for League information'/>
+            <LeagueCard leagues={league}/>
           </div>
         </div>
         <div >

@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 2022_05_16_220325) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
+    t.string "img"
+    t.string "alt"
     t.integer "health"
     t.integer "attack"
     t.integer "defense"

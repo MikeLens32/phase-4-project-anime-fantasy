@@ -37,11 +37,11 @@ class LeaguesController < ApplicationController
     private
 
     def lg_ch_params
-        params.require(:league).permit(:id, :creator_id, :member_id)
+        params.require(:league).permit(:id, :creator_id, :invitations, :league_characters)
     end
 
     def lg_params
-        params.permit(:name, :creator_id, :member_id)
+        params.permit(:name, :creator_id, :invitations, :league_characters)
     end
 
 end

@@ -2,6 +2,8 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
   def change
     create_table :characters do |t|
       t.string :name
+      t.string :img
+      t.string :alt
       t.integer :health
       t.integer :attack
       t.integer :defense

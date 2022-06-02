@@ -15,7 +15,7 @@ const ALHomePage = () => {
   }, [user, history])
     
   return (
-    <div className='mx-10 my-10'>
+    <div >
         <ALHContainer />
     </div>
   )

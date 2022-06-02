@@ -33,7 +33,7 @@ const ALCreateForm = () => {
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='league' onChange={(e) => setLeague(e.target.value)} value={league} type='text' placeholder='League'/>
             <br/>
             <div className='flex items-center justify-between mt-5'>
-            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' >Login</button>
+            <button className='bg-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 border rounded focus:outline-none focus:shadow-outline' type='submit' >Start</button>
             </div>
         </form>
     </div>

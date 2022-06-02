@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
     end
 
     def authorized #attaching this to the before_action macro will have this guard clause run before all user actions
-        return render json: { error: "Not authorized" }, status: :unathorized unless current_user
+        return render json: { error: "Not authorized" }, status: :unauthorized unless current_user
     end
 
     def invalid_record(invalid)

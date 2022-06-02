@@ -15,9 +15,9 @@ export const attack = ({ attacker }) => {
 
 export const ultimate = ({ attacker, receiver }) => {
   const receivedDamage =
-    attacker.ultimate * 1.25;
+    attacker.ult_move * 1.25;
 
-  const finalDamage = receivedDamage - receiver.defense < 0 ? 0 : receivedDamage - receiver.defense / 2;
+  const finalDamage = receivedDamage  / 2;
 
   return finalDamage;
 };
