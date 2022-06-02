@@ -16,8 +16,8 @@ export const ALHContainer = () => {
   }, [])
   console.log(league)
 
-  const filtered = league.filter(l => l.id === 1)
-  console.log('Filtered',filtered)
+  // const filtered = league.filter(l => l.id === 1)
+  // console.log('Filtered',filtered)
 
   return (
     <div className='bg-gradient-to-r from-white to-cyan-500'>

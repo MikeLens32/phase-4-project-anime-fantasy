@@ -1,22 +1,22 @@
-import Goku from '../assets/Character-05.png';
+import Goku from '../assets/Characers-05.png';
 import Vegeta from '../assets/Characers-17.png';
-import Rimuru from '../assets/Characers-15.png'
-import Kaneki from '../assets/Characers-07.png'
-import Saitama from '../assets/Characers-16.png'
-import Deku from '../assets/Characers-02.png'
-import Gojo from '../assets/Characers-04.png'
-import Luffy from '../assets/Characers-11.png'
-import Law from '../assets/Characers-10.png'
-import Vergil from '../assets/Characers-20.png'
-import Sakuna from '../assets/Characers-19.png'
-import Yusake from '../assets/Characers-18.png'
-import Naruto from '../assets/Characers-13.png'
-import Sasuke from '../assets/Characers-14.png'
-import Ichigo from '../assets/Characers-06.png'
-import Asta from '../assets/Characers-01.png'
-import Gohan from '../assets/Characers-03.png'
-import Mob from '../assets/Characers-12.png'
-import Kid from '../assets/Characers-08.png'
+import Rimuru from '../assets/Characers-15.png';
+import Kaneki from '../assets/Characers-07.png';
+import Saitama from '../assets/Characers-16.png';
+import Deku from '../assets/Characers-02.png';
+import Gojo from '../assets/Characers-04.png';
+import Luffy from '../assets/Characers-11.png';
+import Law from '../assets/Characers-10.png';
+import Vergil from '../assets/Characers-20.png';
+import Sakuna from '../assets/Characers-19.png';
+import Yusake from '../assets/Characers-18.png';
+import Naruto from '../assets/Characers-13.png';
+import Sasuke from '../assets/Characers-14.png';
+import Ichigo from '../assets/Characers-06.png';
+import Asta from '../assets/Characers-01.png';
+import Gohan from '../assets/Characers-03.png';
+import Mob from '../assets/Characers-12.png';
+import Kid from '../assets/Characers-08.png';
 import Koro from '../assets/Characers-09.png'
 
 export const CharacterImage = [
@@ -98,6 +98,6 @@ export const CharacterImage = [
     },
     {
         image: {Koro},
-        alt: 'Koro'
+        alt: 'Koro Sensie'
     }
 ]

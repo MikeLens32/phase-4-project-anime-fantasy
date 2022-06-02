@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Battle from '../components/Battle';
 import StartMenu from '../components/StartMenu';
 // import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,27 @@ import StartMenu from '../components/StartMenu';
 const LeagueCard = ({leagues}) => {
 
     const [mode, setMode] = useState('start')
+
+    const [ character, setCharacter] = useState([])
+    const [ userStats, setUserStats ] = useState({})
+    const [ oppStats, setOppStats ] = useState({})
+
+    useEffect(() => {
+        fetch('/characters')
+        .then(r => r.json())
+        .then(userCharacterData => {
+            setCharacter(userCharacterData)
+            console.log('UserCharacterData',userCharacterData)
+            // setUserStats(userCharacterData[2])
+            // setOppStats(userCharacterData[10])
+            setUserStats(userCharacterData[Math.floor(Math.random() * userCharacterData.length)])
+            setOppStats(userCharacterData[Math.floor(Math.random() * userCharacterData.length)])
+            console.log(userStats)
+            console.log(oppStats)
+            console.log('User:', userStats, 'Opp:', oppStats)
+            console.log('img:', userStats.img)
+        })
+    }, [leagues])
 
     const leagueMapped = () => {
         return leagues.map((league) => (
@@ -16,7 +37,7 @@ const LeagueCard = ({leagues}) => {
                 <div>
                     {mode === 'start' && (<StartMenu onStartClick={() => setMode('battle')}/>)}
 
-                    {mode === 'battle' && <Battle />}
+                    {mode === 'battle' && <Battle userStats={userStats} oppStats={oppStats} userImg={userStats.img} oppImg={oppStats.img} />}
 
                     {mode === 'gameOver' && <>Game Over</>}
                 </div>
