@@ -53,7 +53,7 @@ const LeagueSignInForm = () => {
         const didItWork = login(userObjIn)
         if (didItWork) {
             setMessage({message: 'Successfully logged in!', color: 'green'})
-            history('/home')
+            history('/home')            
         }
     }
 

@@ -16,7 +16,7 @@ const Invitation = () => {
         })
     }
 
-    function handleSumbit() {
+    function handleSumbit(e) {
         e.preventDefault()
 
         const inviteForm = {

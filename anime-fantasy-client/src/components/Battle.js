@@ -9,8 +9,8 @@ import { useBattleSequence } from './UseBattleSequence';
 // import { CharacterImage } from './CharacterImage';
 
 const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
-    console.log(oppStats);
-    console.log( oppStats.img);
+    console.log(`oppStats: ${JSON.stringify(oppStats)}`);
+    console.log(`oppStats.character.img: ${oppStats.character.img}`);
     const [ sequence, setSequence ] = useState({})
 
     const {
@@ -45,16 +45,16 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
             </div>
             <div className='characters' >
                 <div className='gameHeader'>
-                    {userStats.name} vs {oppStats.name}
+                    {userStats.character.name} vs {oppStats.character.name}
                 </div>
 
                 <div className='gameImages'>
                     {userStats ? (<div className='playerSprite'>
-                        <img className={[userAnimation]} src={require('../assets/Characers-17.png')} alt={userStats.alt}/>
+                        <img className={[userAnimation]} src={userStats.character.img} alt={userStats.alt}/>
                     </div>) : null}
 
                     {oppStats ? (<div className='opponentSprite'>
-                        <img className={[oppAnimation]} src={require('../assets/Characers-10.png')} alt={oppStats.alt}/>
+                        <img className={[oppAnimation]} src={oppStats.character.img} alt={oppStats.alt}/>
                     </div>) : null }
                 </div>
             </div>
