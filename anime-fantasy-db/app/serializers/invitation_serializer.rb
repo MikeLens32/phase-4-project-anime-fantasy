@@ -1,3 +1,3 @@
 class InvitationSerializer < ActiveModel::Serializer
-  attributes :id, :invite_accepted, :member_id, :member#, serializer: MemberSerializer
+  attributes :id, :invite_accepted, :member_id, :member, :user#, serializer: MemberSerializer
 end

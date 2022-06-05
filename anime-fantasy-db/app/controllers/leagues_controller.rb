@@ -2,12 +2,11 @@ class LeaguesController < ApplicationController
     skip_before_action :authorized, only: [:index]
 
     def index
-        if params[:league_id]
-            user = User.find_by(id: session[:id])
-            render json: user.leagues
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            render json: user.created_leagues
         else 
-            leagues = League.all
-            render json: leagues
+            render json: League.all
         end
     end
     
@@ -18,7 +17,9 @@ class LeaguesController < ApplicationController
     
     def create
         league = League.create!(lg_params)
-        Character.all.each{|anime_character| LeagueCharacter.create(lg_ch_params)}
+        Character.all.each do |anime_character| 
+            LeagueCharacter.create(league: league, character: anime_character)
+        end
         render json: league, status: :created
     end
 

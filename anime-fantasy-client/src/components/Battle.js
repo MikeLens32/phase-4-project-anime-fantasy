@@ -6,7 +6,7 @@ import CharacterSummary from './CharacterSummary';
 // import { oppStats, userStats } from './TestCharacter'
 import { useAIOppenent } from './useAIOppenent';
 import { useBattleSequence } from './UseBattleSequence';
-import { CharacterImage } from './CharacterImage';
+// import { CharacterImage } from './CharacterImage';
 
 const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
     console.log(oppStats);
@@ -50,11 +50,11 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
 
                 <div className='gameImages'>
                     {userStats ? (<div className='playerSprite'>
-                        <img className={[userAnimation]} src={require(userImg)} alt={userStats.alt}/>
+                        <img className={[userAnimation]} src={require('../assets/Characers-17.png')} alt={userStats.alt}/>
                     </div>) : null}
 
                     {oppStats ? (<div className='opponentSprite'>
-                        <img className={[oppAnimation]} src='Characers-10.png' alt={oppStats.alt}/>
+                        <img className={[oppAnimation]} src={require('../assets/Characers-10.png')} alt={oppStats.alt}/>
                     </div>) : null }
                 </div>
             </div>

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext} from '../context/user'
 import { useNavigate } from 'react-router-dom';
 import LeagueCard from '../components/LeagueCard';
 
 export const ALHContainer = () => {    
 
   const history = useNavigate()
-  const [ league, setLeague ] = useState([])
+  const [ leagues, setLeagues ] = useState([])
   // const [ currentLeague, setCurrentLeague ] = useState(1)
+
+  const { user } = useContext(UserContext)
 
 
   useEffect(() => {
-    fetch(`/leagues`)
+    fetch(`/leagues?user_id=${user.id}`)
     .then(r => r.json())
-    .then((leagueData) => setLeague(leagueData))
+    .then((leaguesData) => setLeagues(leaguesData))
   }, [])
-  console.log(league)
+
+  console.log('Leagues Invitations Data:', leagues[0]?.invitations)
 
   // const filtered = league.filter(l => l.id === 1)
   // console.log('Filtered',filtered)
@@ -28,7 +32,7 @@ export const ALHContainer = () => {
 
         <div >
           <div className='Display Leagues grid-cols-4'>
-            <LeagueCard leagues={league}/>
+            <LeagueCard leagues={leagues}/>
           </div>
         </div>
         <div >
