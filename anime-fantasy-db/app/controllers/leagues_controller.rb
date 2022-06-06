@@ -4,7 +4,7 @@ class LeaguesController < ApplicationController
     def index
         if params[:user_id]
             user = User.find_by(id: params[:user_id])
-            render json: user.created_leagues
+            render json: League.joins(:invitations).distinct.where(invitations: { user_id: user.id }).or(League.joins(:invitations).distinct.where(invitations: { member_id: user.id }))
         else 
             render json: League.all
         end
@@ -24,9 +24,9 @@ class LeaguesController < ApplicationController
     end
 
     def update 
-        league = League.find_by(id: params(:id))
-        league.update{lg_params}
-        render json: league, status: :updated
+        league = League.find_by(id: params[:id])
+        league.update(lg_params)
+        render json: league, status: :ok
     end
 
     def destroy

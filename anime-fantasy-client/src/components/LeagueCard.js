@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useNavigate } from 'react-router';
+import EditModal from './EditModal';
 
 
 const LeagueCard = ({ leagues }) => {
@@ -8,6 +9,7 @@ const LeagueCard = ({ leagues }) => {
     // console.log('Leagues names', leagues);
     const { user } = useContext(UserContext)
     const [leagueCard, setLeagueCard] = useState(leagues)
+    const [isOpen, setIsOpen] = useState(false)
     const history = useNavigate()
 
     function handleDelete(leagueId) {
@@ -29,10 +31,11 @@ const LeagueCard = ({ leagues }) => {
                         </h3>
                         <br/>
                         <div className='flex flex-row gap-1'>
-                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2' onClick={() => handleDelete(league.id)} type='submit' value='DELETE'/> : null}
-                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center'  type='sumbit' value='EDIT'/> : null}
-                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center' onClick={() => history(`/anime-league/${league.id}/invitation`)}  type='sumbit' value='INVITE'/> : null}
-                        <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2' type='submit' value='GO PLAY' onClick={() => history(`/anime-league/${league.id}`)}/>
+                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 cursor-pointer' onClick={() => handleDelete(league.id)} type='submit' value='DELETE'/> : null}
+                        { user.id === league.creator_id ? <button className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center cursor-pointer' onClick={() => setIsOpen(true)}>EDIT</button> : null}
+                        <EditModal id={league.id} setLeagueCard={setLeagueCard} open={isOpen} close={() => setIsOpen(false)}></EditModal>
+                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center cursor-pointer' onClick={() => history(`/anime-league/${league.id}/invitation`)}  type='sumbit' value='INVITE'/> : null}
+                        <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 cursor-pointer' type='submit' value='GO PLAY' onClick={() => history(`/anime-league/${league.id}`)}/>
                         </div>
                     </div>
                 </div>                

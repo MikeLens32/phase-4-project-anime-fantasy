@@ -5,11 +5,9 @@ Rails.application.routes.draw do
   resources :league_characters, only: [:index, :show]
   resources :leagues
 
-  resources :users, only: [:update, :destroy]
+  resources :users, only: [:update, :destroy, :index]
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
-
-
 end
