@@ -7,6 +7,7 @@ import LeagueSignInForm from './LeagueSignInForm';
 import ALHomePage from './ALHomePage';
 import CreateLeague from './CreateLeague';
 import AnimeLeague from './AnimeLeague';
+import Invitation from './Invitation';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/anime-fantasy" element={<ALHomePage />} />  
         <Route path="/create-league" element={<CreateLeague />} />  
         <Route path="/anime-league/:id" element={<AnimeLeague />} />  
+        <Route path="/anime-league/:id/invitation" element={<Invitation />} />  
         </Routes>
     </div>
   );

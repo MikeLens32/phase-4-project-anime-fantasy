@@ -11,7 +11,7 @@ const LeagueCard = ({ leagues }) => {
     const history = useNavigate()
 
     function handleDelete(leagueId) {
-        fetch(`/league/${leagueId}`, {method: 'DELETE',})
+        fetch(`/leagues/${leagueId}`, {method: 'DELETE',})
         .then(r => r.json())
         .then(deletedLeague => setLeagueCard(leagueCard.filter(lc => lc.id !== deletedLeague.id)))
     }
@@ -21,15 +21,19 @@ const LeagueCard = ({ leagues }) => {
     const leagueMapped = () => {
         return leagues.map((league) => (
             <>
-                <div className=' shadow-md bg-white rounded-lg box-border hover:bg-blue-400 hover:-translate-y-3 duration-500 h-300 w-96 p-4 px-8 pt-6 pb-8 my-12' onClick={() => history(`/anime-league/${league.id}`)}>
-                    <div className='hover:text-blue-50'>                        
-                        <h1 key={league.id} className='hover:text-blue-50 text-blue-600 text-xs font-bold px-2 py-2'>{league.name}</h1>
+                <div className=' shadow-md bg-white rounded-lg box-border hover:bg-opacity-50 hover:-translate-y-3 duration-500 h-300 max-w-xl p-4 px-8 pt-6 pb-8 my-12' >
+                    <div className='grid gird-rows-3'>                        
+                        <h1 key={league.id} className='text-blue-600 text-lg font-bold px-2 py-2'>{league.name}</h1>
                         <h3 className='text-blue-600 text-xs font-bold px-2 py-2'>
-                            Members: {league.invitations.map((i) => {return `${i.member.username}\r\n`;})}                    
+                            Members: {league.invitations.map((i) => {return `  ${i.member.username}  `;})}                    
                         </h3>
-                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-400 hover:text-blue-600 text-blue-50 text-xs font-bold px-2 py-2' onClick={() => handleDelete(league.id)} type='submit' value='Delete'/> : ''}
                         <br/>
-                        { user.id === league.creator_id ? 'EDIT' : ''}
+                        <div className='flex flex-row gap-1'>
+                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2' onClick={() => handleDelete(league.id)} type='submit' value='DELETE'/> : null}
+                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center'  type='sumbit' value='EDIT'/> : null}
+                        { user.id === league.creator_id ? <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2 text-center' onClick={() => history(`/anime-league/${league.id}/invitation`)}  type='sumbit' value='INVITE'/> : null}
+                        <input className='bg-blue-600 rounded-lg box-border hover:bg-blue-200 hover:text-blue-600 text-blue-50 text-sm font-bold px-2 py-2' type='submit' value='GO PLAY' onClick={() => history(`/anime-league/${league.id}`)}/>
+                        </div>
                     </div>
                 </div>                
             </>
