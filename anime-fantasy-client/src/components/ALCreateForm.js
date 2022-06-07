@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router';
 import { UserContext } from '../context/user';
 
 const ALCreateForm = () => {
@@ -17,7 +18,7 @@ const ALCreateForm = () => {
             [e.target.name]:e.target.value
         })
     }
-
+    const history = useNavigate()
     function handleSubmit(e){
         e.preventDefault()
 
@@ -38,6 +39,7 @@ const ALCreateForm = () => {
                 r.json().then(leagueData => setLeague(leagueData))
             }
         })
+        history('/anime-fantasy')
     }
 
   return (
