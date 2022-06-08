@@ -8,6 +8,7 @@ import ALHomePage from './ALHomePage';
 import CreateLeague from './CreateLeague';
 import AnimeLeague from './AnimeLeague';
 import Invitation from './Invitation';
+import EditLeagueName from './EditLeagueName';
 
 function App() {
 
@@ -21,12 +22,13 @@ function App() {
     <div className='h-screen w-full justify-center bg-gradient-to-r from-white to-cyan-500' >
         <NavBar />
         <Routes>
-        <Route path="/" element={<LeagueSignInForm />} />  
-        <Route path="/home" element={<Home />} /> 
-        <Route path="/anime-fantasy" element={<ALHomePage />} />  
-        <Route path="/create-league" element={<CreateLeague />} />  
-        <Route path="/anime-league/:id" element={<AnimeLeague />} />  
-        <Route path="/anime-league/:id/invitation" element={<Invitation />} />  
+        <Route exact path="/" element={<LeagueSignInForm />} />  
+        <Route exact path="/home" element={<Home />} /> 
+        <Route exact path="/anime-fantasy" element={<ALHomePage />} />  
+        <Route exact path="/create-league" element={<CreateLeague />} />  
+        <Route exact path="/anime-league/:id" element={<AnimeLeague />} />  
+        <Route exact path="/anime-league/:id/edit" element={<EditLeagueName />} />  
+        <Route exact path="/anime-league/:id/invitation" element={<Invitation />} />  
         </Routes>
     </div>
   );

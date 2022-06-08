@@ -32,7 +32,7 @@ export const ALHContainer = () => {
 
         <div >
           <div className='Display Leagues grid-cols-4'>
-            <LeagueCard leagues={leagues} />
+            <LeagueCard leagues={leagues} setLeagues={setLeagues} />
           </div>
         </div>
         <div >

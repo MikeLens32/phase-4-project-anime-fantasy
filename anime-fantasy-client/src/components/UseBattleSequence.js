@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { wait, ultimate, attack } from './Helpers';
-import { userStats, oppStats } from './TestCharacter'
 
-export const useBattleSequence = sequence => {
 
+export const useBattleSequence = ({ sequence, userStats, oppStats }) => {
+  
     const [ turn, setTurn] = useState(0)
     
+    
     const [ inSequence, setInSequence ] = useState(false)
-    const [ oppHealth, setOppHealth ] = useState(oppStats.health)
-    const [ userHealth, setUserHealth ] = useState(userStats.health)
+    const [ oppHealth, setOppHealth ] = useState(oppStats.character.health)
+    const [ userHealth, setUserHealth ] = useState(userStats.character.health)
 
     const [ announcerMessage, setAnnouncerMessage ] = useState('')
 
@@ -28,7 +29,7 @@ export const useBattleSequence = sequence => {
                     const damaged = attack({ attacker, reciever});
                     (async () => {
                         setInSequence(true);
-                        setAnnouncerMessage(`${attacker.name} has chosen to attack!`);
+                        setAnnouncerMessage(`${attacker.character.name} has chosen to attack!`);
 
                         await wait(1000);
 
@@ -42,11 +43,11 @@ export const useBattleSequence = sequence => {
                         await wait(750);
 
                         turn === 0 ? setOppAnimation('static') : setUserAnimation('static');
-                        setAnnouncerMessage(`${reciever.name} felt that!`);
+                        setAnnouncerMessage(`${reciever.character.name} felt that!`);
                         turn === 0 ? setOppHealth(h => ( h - damaged > 0 ? h - damaged : 0)) : setUserHealth(h => (h - damaged > 0 ? h - damaged : 0));
                         await wait(2000);
 
-                        setAnnouncerMessage(`Now it's ${reciever.name} turn!`);
+                        setAnnouncerMessage(`Now it's ${reciever.character.name} turn!`);
                         await wait(1500);
 
                         setTurn(turn === 0 ? 1 : 0)
@@ -61,7 +62,7 @@ export const useBattleSequence = sequence => {
                     const damaged = ultimate({ attacker, reciever});
                     (async () => {
                         setInSequence(true);
-                        setAnnouncerMessage(`${attacker.name} has chosen to ultimate!`);
+                        setAnnouncerMessage(`${attacker.character.name} has chosen to ultimate!`);
 
                         await wait(1000);
 
@@ -75,11 +76,11 @@ export const useBattleSequence = sequence => {
                         await wait(750);
 
                         turn === 0 ? setOppAnimation('static') : setUserAnimation('static');
-                        setAnnouncerMessage(`Ouch I know ${reciever.name} felt that!`);
+                        setAnnouncerMessage(`Ouch I know ${reciever.character.name} felt that!`);
                         turn === 0 ? setOppHealth(h => ( h - damaged > 0 ? h - damaged : 0)) : setUserHealth(h => (h - damaged > 0 ? h - damaged : 0));
                         await wait(2000);
 
-                        setAnnouncerMessage(`Now it's ${reciever.name} turn!`);
+                        setAnnouncerMessage(`Now it's ${reciever.character.name} turn!`);
                         await wait(1500);
 
                         setTurn(turn === 0 ? 1 : 0)

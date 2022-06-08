@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import Battle from '../components/Battle';
 import StartMenu from '../components/StartMenu';
+import { useBattleSequence } from './UseBattleSequence';
 
 const AnimeLeague = () => {
 
@@ -36,7 +37,7 @@ const AnimeLeague = () => {
             <div>
                 {mode === 'start' && (<StartMenu onStartClick={() => setMode('battle')}/>)}
 
-                {mode === 'battle' && <Battle userStats={userStats} oppStats={oppStats} userImg={userStats.img} oppImg={oppStats.img} />}
+                {mode === 'battle' && <Battle userStats={userStats} oppStats={oppStats}/>}
 
                 {mode === 'gameOver' && <>Game Over</>}
             </div>

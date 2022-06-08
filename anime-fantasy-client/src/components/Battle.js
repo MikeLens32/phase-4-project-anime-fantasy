@@ -3,12 +3,11 @@ import '../css/Battle.css'
 import { BattleAnnoucer } from './BattleAnnoucer';
 import BattleMenu from './BattleMenu';
 import CharacterSummary from './CharacterSummary';
-// import { oppStats, userStats } from './TestCharacter'
+import { oppStats, userStats } from './TestCharacter'
 import { useAIOppenent } from './useAIOppenent';
 import { useBattleSequence } from './UseBattleSequence';
-// import { CharacterImage } from './CharacterImage';
 
-const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
+const Battle = ({ oppStats, userStats }) => {
     console.log(`oppStats: ${JSON.stringify(oppStats)}`);
     console.log(`oppStats.character.img: ${oppStats.character.img}`);
     const [ sequence, setSequence ] = useState({})
@@ -21,7 +20,7 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
         announcerMessage,
         userAnimation,
         oppAnimation
-    } = useBattleSequence(sequence)
+    } = useBattleSequence({sequence, oppStats, userStats})
 
     const aiChoice = useAIOppenent(turn)
 
@@ -37,9 +36,9 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
                 <div className='summary flex items-stetch'>
                 <CharacterSummary 
                     damage={oppHealth}
-                    health={oppStats.health}
-                    name={oppStats.name}
-                    stamina={oppStats.stamina}
+                    health={oppStats.character.health}
+                    name={oppStats.character.name}
+                    stamina={oppStats.character.stamina}
                 />
                 </div>
             </div>
@@ -63,9 +62,9 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
                     {userStats ? (<CharacterSummary 
                         user
                         damage={userHealth}
-                        health={userStats.health}
-                        name={userStats.name}
-                        stamina={userStats.stamina}
+                        health={userStats.character.health}
+                        name={userStats.character.name}
+                        stamina={userStats.character.stamina}
                     />) : null }
                 </div>
                 
@@ -73,7 +72,7 @@ const Battle = ({ oppStats, userStats, userImg, oppImg}) => {
 
                     <div className='hudChild'>
                         {userStats ? (<BattleAnnoucer  
-                        message={announcerMessage  || `What will ${userStats.name} do?`}/>) : null}
+                        message={announcerMessage  || `What will ${userStats.character.name} do?`}/>) : null}
                     </div>
                     
                     <div className='hudChild'>

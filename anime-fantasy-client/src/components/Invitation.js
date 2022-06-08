@@ -7,11 +7,6 @@ const Invitation = () => {
     const [memberId, setMemberId] = useState(1);
     const [usersOptions, setUsersOptions] = useState([]);
     const { user } = useContext(UserContext)
-
-    // const [invite, setInvite] = useState({
-    //     username: '',
-    //     invite_accepted: true
-    // })
     const { id } = useParams()
     const history = useNavigate()
 

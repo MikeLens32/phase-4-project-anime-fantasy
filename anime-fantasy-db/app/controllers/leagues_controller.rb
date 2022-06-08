@@ -4,7 +4,8 @@ class LeaguesController < ApplicationController
     def index
         if params[:user_id]
             user = User.find_by(id: params[:user_id])
-            render json: League.joins(:invitations).distinct.where(leagues: { creator_id: user.created_leagues }).or(League.joins(:invitations).distinct.where(invitations: { member_id: user.id }))
+            render json: user.all_leagues
+            #League.joins(:invitations).distinct.where(leagues: { creator_id: user.created_leagues }).or(League.joins(:invitations).distinct.where(invitations: { member_id: user.id }))
             # user.created_leagues
         else 
             render json: League.all
@@ -32,8 +33,9 @@ class LeaguesController < ApplicationController
 
     def destroy
         league = League.find_by(id: params[:id])
-        league&.destroy
-        render json: league
+        # binding.pry
+        league&.destroy!
+        head :no_content
     end
 
     private
