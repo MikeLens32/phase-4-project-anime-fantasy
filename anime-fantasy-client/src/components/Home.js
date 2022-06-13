@@ -7,6 +7,8 @@ const Home = () => {
 
     const { user } = useContext(UserContext)
     if (!user) return <Navigate to='/'/>
+
+    
     
     return (
         <div className='h-screen w-full bg-gradient-to-r from-white to-cyan-500'>

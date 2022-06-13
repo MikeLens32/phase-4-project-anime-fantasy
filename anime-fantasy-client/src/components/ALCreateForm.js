@@ -43,7 +43,7 @@ const ALCreateForm = () => {
     }
 
   return (
-    <div>
+    <div className='flex justify-center items-center h-screen w-full bg-gradient-to-r from-white to-cyan-500'>
         <form className='shadow-md bg-white round box-border h-64 w-96 p-4 px-8 pt-6 pb-8 mb-4 mt-20' onSubmit={handleSubmit} >
         <h2>Create League</h2>
             <label className='black text-gray-700 tet-sm font-bold md-2' >League Name</label>

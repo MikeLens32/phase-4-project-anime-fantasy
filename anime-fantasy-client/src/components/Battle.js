@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
 import '../css/Battle.css'
-import { BattleAnnoucer } from './BattleAnnoucer';
 import BattleMenu from './BattleMenu';
+import React, { useState, useEffect } from 'react';
+import { wait } from './Helpers'
+import { BattleAnnoucer } from './BattleAnnoucer';
 import CharacterSummary from './CharacterSummary';
-import { oppStats, userStats } from './TestCharacter'
 import { useAIOppenent } from './useAIOppenent';
 import { useBattleSequence } from './UseBattleSequence';
 
-const Battle = ({ oppStats, userStats }) => {
-    console.log(`oppStats: ${JSON.stringify(oppStats)}`);
-    console.log(`oppStats.character.img: ${oppStats.character.img}`);
+const Battle = ({ oppStats, userStats, onGameEnd }) => {
+    
     const [ sequence, setSequence ] = useState({})
-
     const {
         turn,
         inSequence,
@@ -30,8 +28,17 @@ const Battle = ({ oppStats, userStats }) => {
         }
     }, [turn, aiChoice, inSequence])
 
+    useEffect(() => {
+        if(userHealth === 0 || oppHealth === 0){
+            (async() => {
+                await wait(1000);
+                onGameEnd(userHealth === 0 ? oppStats : userStats)
+            })();
+        }
+    }, [ userHealth, oppHealth, onGameEnd ])
+
     return (
-        <>
+        <div className='h-full bg-gradient-to-r from-white to-cyan-500'>
             <div className='opponent flex flex-cols gap-1 w-full p-1'>
                 <div className='summary flex items-stetch'>
                 <CharacterSummary 
@@ -48,31 +55,30 @@ const Battle = ({ oppStats, userStats }) => {
                 </div>
 
                 <div className='gameImages'>
-                    {userStats ? (<div className='playerSprite'>
+                    <div className='playerSprite'>
                         <img className={[userAnimation]} src={userStats.character.img} alt={userStats.alt}/>
-                    </div>) : null}
+                    </div>
 
-                    {oppStats ? (<div className='opponentSprite'>
+                    <div className='opponentSprite'>
                         <img className={[oppAnimation]} src={oppStats.character.img} alt={oppStats.alt}/>
-                    </div>) : null }
+                    </div>
                 </div>
             </div>
             <div className='user'>
                 <div className='summary'>
-                    {userStats ? (<CharacterSummary 
+                    <CharacterSummary 
                         user
                         damage={userHealth}
                         health={userStats.character.health}
                         name={userStats.character.name}
                         stamina={userStats.character.stamina}
-                    />) : null }
+                    />
                 </div>
                 
                 <div className='hud'>
-
                     <div className='hudChild'>
-                        {userStats ? (<BattleAnnoucer  
-                        message={announcerMessage  || `What will ${userStats.character.name} do?`}/>) : null}
+                        <BattleAnnoucer  
+                        message={announcerMessage  || `What will ${userStats.character.name} do?`}/>
                     </div>
                     
                     <div className='hudChild'>
@@ -83,7 +89,7 @@ const Battle = ({ oppStats, userStats }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

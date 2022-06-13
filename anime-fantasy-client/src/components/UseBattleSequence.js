@@ -95,7 +95,7 @@ export const useBattleSequence = ({ sequence, userStats, oppStats }) => {
                     break
             }
         }
-    }, [sequence])
+    }, [ userStats, oppStats,sequence])
 
     return {
         turn,

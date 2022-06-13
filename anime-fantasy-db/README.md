@@ -1,25 +1,5 @@
-# README
+# Phase-4-Project-Anime-Fantasy-DB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I had to break down the tables with what I wanted to do. For the front end I wanted to have a login component to pop-up if there isn’t a current user signed into the sessions. The home page would have stored information on a component on the frontend. For the League page is where the real break down of the tables come into play. I want to be able to invite your friends/users to the league you created and give the creator of the league to have full crud abilities. For my many to many requirement of this project  Users can have many leagues and have many characters through league. League have many users through invitations as a foreign key of member and league has many characters through a join table called league characters. So every time a new league is created a new roster of 20 characters is generated for that league. Also, I used active record to carry the creation of these tables before going into edit them through “rails g resource _____ —no-test-framework” and made table for the user and sessions. Both of these are very necessary for the login features of the website.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# phase-4-project-anime-fantasy
+After, creating my tables I had a good amount of seeding data to enter. I created my list of 20 characters and decided what would be a far power scaling ynamic between the anime characters from different types of shows and universes. I have fun creating the health, attack, and defense stats and found images to resize to make sure they were all the same size. I uploaded the images in a public folder called assets and added a img column to the characters. In the img column I put the path to the proper image for each of the 20 characters, with a alt name. I created two leagues and made sure to make invites for the leagues. I made 5 active users to start with to make sure I had a nice pool to start with for my beginning features. 

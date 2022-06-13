@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+#Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For my websites I split the styling work between css and tailwind. I will be honest I wanted to use a lot of bootstrap but with the newest version of react it wasn’t cooperating. For the load of the login in feature I decided to use useContext to handle all the login feathers (sign-in, sign-up, sign-out).  Also, was great to use and time I need the current user on any component compared to passing down props every time. For the home page  I took the information from the end point of the API I wanted to use but wasn’t working. I created a component that had the set information in it and added links to the pages to finish reading the article. I put the information through a carding component called newsCards.js and did the styling through tailwind for the card look with its hovering features. 
 
-## Available Scripts
+The league page fetches from the leagues index route and will display only the leagues the current user is in (as a creator or member). The styling for this was all done with tailwind as well. The retrieved data is put through a card to illustrate the name of the league, the members of the league, and four buttons that complete the full CRUD features of the leagues (create, read, update, and delete). There’s a component with is owns button to create your own new league. When clicked it will take you to a form with just a league name. With the generation of a new league, a league ID will be created with a new batch of characters for that league. When the name is typed and the button is clicked it will navigate the user back to the league page.
 
-In the project directory, you can run:
+The league cards has four buttons that give the creator control of the full CRUD options. There’s the delete button that removes the league from the page, EDIT button that allows the creator to change the name of the league, INVITE button to invite other users, and GO PLAY is for the league with the members where you can battle. 
 
-### `npm start`
+The CREATE button navigates the user to create league form and the form only contains one input field to enter the desired name of the league the user will be creating. After making the league name and hitting submit it will navigate you back to the ALHomePage component. When navigating back the user will the newly generated league. This brings us to the next feature, INVITE! With the invite button you’ll be navigated to a different page with a drop down menu that illustrates all users in the app to send invites to. After selecting the user’s username and clicking it in the drop down it actually selects the username’s id to send to the backend fetch. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Then, there’s the EDIT feature witch is a button that uses useNavigate to take you to another page where you’ll see the edit form for the league name. There’s a fetch call here for a PATCH connected to the submit in the form and will navigate you back to the page with all the league. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Finally, the most challenging and fun part of this website brings us to the GO PLAY button.  With this click it brings you to another page that simply displays the members in your league and has a START button. When clicking the start button it will take you to the next mode. I created a useState to navigate the user in between modes accordingly. When clicking start you go from “start” to “battle” which are two different components. The Battle has a few components to it to get the battling to work. For starters the many to many my project has is here and comes from the roster of 20 different anime characters. When a new league is created a new roster of characters is created for each league through the join table league_characters on my backend. So for the league you’re currently in and you click battle, the fetch goes to your league and your character is generated with a algorithm to produce a random character for you to use and fight against. Each character has their own unique stats and you’re in a turn based battle between your random generated character and another. There’s a Character Summary component for each characters stats used in the battle,  Battle announcer component that illustrates the narration of the battle between the fighting, bat tale menu that displays the attacking options, useAIOppenent for the opponent to randomly select their attack between their options, and useBattleSequence to regulate the sequence of the fighting between each click. That was a lot I know but I promise this is veery fun. 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+There you have it for my Phase Four Project, Anime Fantasy! Enjoy!

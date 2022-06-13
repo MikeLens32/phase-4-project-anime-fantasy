@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const EditLeagueName = () => {
@@ -6,7 +6,14 @@ const EditLeagueName = () => {
     const [leagueName, setLeagueName] = useState('')
     const { id } = useParams()
     const history = useNavigate()
-    console.log('ID:', id)
+
+    useEffect(() => {
+        fetch(`/leagues/${id}`)
+        .then(r => r.json())
+        .then(league => {
+            setLeagueName(league.name)
+        })
+    }, [id])
 
     function handleClick(e) {
         e.preventDefault()
@@ -28,7 +35,7 @@ const EditLeagueName = () => {
     }
 
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center h-screen bg-gradient-to-r from-white to-cyan-500'>
             <div className='grid grid-rows-3 shadow-md bg-white rounded-lg box-border h-64 max-w-xl p-4 px-8 pt-6 pb-8 my-12 justify-center items-centered'>
                 <form onSubmit={handleClick}>
                     <label className='text-blue-600 text-lg font-bold px-2 py-2'>Change League Name</label>                        

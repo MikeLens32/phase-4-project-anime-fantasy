@@ -1,3 +1,4 @@
+import '../css/ALHomePage.css'
 import React, { useEffect, useContext } from 'react';
 import { UserContext } from '../context/user'
 import { ALHContainer } from '../container/ALHContainer'
@@ -15,7 +16,10 @@ const ALHomePage = () => {
   }, [user, history])
     
   return (
-    <div >
+    <div className='h-screen w-full justify-center items-center bg-gradient-to-r from-white to-cyan-500'>
+      <div className='flex justify-center'>
+        <h1 className='title'>Welcome {user.username}!</h1>
+      </div>
         <ALHContainer />
     </div>
   )

@@ -27,7 +27,7 @@ const LeagueCard = ({ leagues, setLeagues }) => {
     const leagueMapped = () => {
         return leagues.map((league) => (
             <>
-                <div className=' shadow-md bg-white rounded-lg box-border hover:bg-opacity-50 hover:-translate-y-3 duration-500 h-300 max-w-3xl p-4 px-8 pt-6 pb-8 my-12' >
+                <div className='shadow-md bg-white rounded-lg box-border hover:bg-opacity-50 hover:-translate-y-3 duration-500 h-300 max-w-3xl p-4 px-8 pt-6 pb-8 my-12 justify-center items-center' >
                     <div className='grid gird-rows-3'>                        
                         <h1 key={league.id} className='text-blue-600 text-lg font-bold px-2 py-2'>{league.name}</h1>
                         <h3 className='text-blue-600 text-xs font-bold px-2 py-2'>
@@ -46,7 +46,7 @@ const LeagueCard = ({ leagues, setLeagues }) => {
                 ))}
 
     return (
-        <div >
+        <div className='justify-center items-center'>
             {leagueMapped()}
         </div>
     )

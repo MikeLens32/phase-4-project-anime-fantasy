@@ -3,9 +3,9 @@ class LeaguesController < ApplicationController
 
     def index
         if params[:user_id]
-            user = User.find_by(id: params[:user_id])
+            user = User.find_by!(id: params[:user_id])
             render json: user.all_leagues
-            #League.joins(:invitations).distinct.where(leagues: { creator_id: user.created_leagues }).or(League.joins(:invitations).distinct.where(invitations: { member_id: user.id }))
+            #
             # user.created_leagues
         else 
             render json: League.all
@@ -13,7 +13,7 @@ class LeaguesController < ApplicationController
     end
     
     def show
-        league = League.find_by(id: params[:id])
+        league = League.find_by!(id: params[:id])
         render json: league
     end
     

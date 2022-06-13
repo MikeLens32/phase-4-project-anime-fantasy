@@ -10,7 +10,7 @@ export default function NavBar() {
     return (
         <div className='w-full h-10 bg-blue-400 text-gray-200 flex flex-row justify-between items-center'>
             {!user ? <div className='brand-logo text-sm font-bold px-2'>Anime Fantasy</div> : <div className='brand-logo text-sm font-bold px-2'>{user.username}</div> }
-            <ul className='memu-list flex flex-row text-xs font-bold px-2'>
+            {user? (<ul className='memu-list flex flex-row text-xs font-bold px-2'>
                 <li className='menu-list-item px-2'>
                     <NavLink to='/home'>  
                         Home
@@ -21,15 +21,12 @@ export default function NavBar() {
                         League
                     </NavLink> 
                 </li>
-                {user ? (
                     <li className='menu-list-item px-2'>
                     <button onClick={signout}>  
                         Logout
                     </button> 
                 </li>
-                ) : null}
-                
-            </ul>
+            </ul>) : null}
 
             <button className='1g:hidden menu-button'>
                 <NavLink to='/'>  

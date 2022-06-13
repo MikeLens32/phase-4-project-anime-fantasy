@@ -19,7 +19,7 @@ function App() {
   }, [getCurrentUser])
 
   return (
-    <div className='h-screen w-full justify-center bg-gradient-to-r from-white to-cyan-500' >
+    <div className='h-full w-full justify-center bg-gradient-to-r from-white to-cyan-500' >
         <NavBar />
         <Routes>
         <Route exact path="/" element={<LeagueSignInForm />} />  
