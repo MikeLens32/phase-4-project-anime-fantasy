@@ -8,7 +8,7 @@ export const ALHContainer = () => {
   const history = useNavigate()
   const [ leagues, setLeagues ] = useState([])
   const { user } = useContext(UserContext)
-  const [ serch, setSeach ] = useState('')
+  const [ serch, setSearch ] = useState('')
 
 //   function handleSearch (e) {
     
