@@ -48,10 +48,10 @@ const Invitation = () => {
     }
 
     return (
-        <div>
-            <form className='grid grid-rows-3 shadow-md bg-white rounded-lg box-border hover:bg-opacity-50 duration-500 h-300 max-w-xl p-4 px-8 pt-6 pb-8 my-12' onSubmit={handleSumbit}>
-                <h2>Invitation</h2>
-                <label>Member Name</label>
+        <div className='h-screen bg-gradient-to-r from-white to-cyan-500 flex justify-center items-center'>
+            <form className='grid grid-rows-3 shadow-md bg-white rounded-lg box-border hover:bg-opacity-50 duration-500 h-64 w-96 max-w-xl p-4 px-8 pt-6 pb-8 my-12' onSubmit={handleSumbit}>
+                <h2 className='black text-gray-700 tet-sm font-bold md-2'>Invitation</h2>
+                <label className='black text-gray-700 tet-sm font-bold md-2'>Member Name</label>
                 <select required type='text' name='member_id' options={usersOptions} value={memberId} onChange={handleChange}>
                     {usersOptionsMapped()}
                 </select>

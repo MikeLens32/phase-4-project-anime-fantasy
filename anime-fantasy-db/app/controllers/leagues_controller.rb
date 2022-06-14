@@ -1,5 +1,6 @@
 class LeaguesController < ApplicationController
     skip_before_action :authorized, only: [:index]
+    before_action :find_league, except: [:index, :create]
 
     def index
         if params[:user_id]
@@ -13,8 +14,7 @@ class LeaguesController < ApplicationController
     end
     
     def show
-        league = League.find_by!(id: params[:id])
-        render json: league
+        render json: @league
     end
     
     def create
@@ -26,19 +26,26 @@ class LeaguesController < ApplicationController
     end
 
     def update 
-        league = League.find_by(id: params[:id])
-        league.update(lg_params)
-        render json: league, status: :ok
+        @league.update!(lg_params)
+        render json: @league, status: :ok
     end
 
     def destroy
-        league = League.find_by(id: params[:id])
         # binding.pry
-        league&.destroy!
+        @league&.destroy!
         head :no_content
     end
 
+    def find_character
+        leagues = League.find_character(params[:lc])
+        render json: leagues
+    end
+
     private
+
+    def find_league
+        @league = League.find_by!(id: params[:id])
+    end
 
     def lg_ch_params
         params.require(:league).permit(:id, :creator_id, :invitations, :league_characters)

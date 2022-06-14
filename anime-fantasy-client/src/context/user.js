@@ -26,7 +26,6 @@ function UserProvider({children}) {
 
     const login = async (userDetail) => { 
         try {
-            console.log(userDetail)
             const resp = await fetch('/login', {
                 method: 'POST',
                 headers: {

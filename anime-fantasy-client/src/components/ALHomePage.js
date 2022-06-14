@@ -14,6 +14,8 @@ const ALHomePage = () => {
         return history('/')
     }
   }, [user, history])
+
+  
     
   return (
     <div className='h-screen w-full justify-center items-center bg-gradient-to-r from-white to-cyan-500'>

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
+  post '/find-character', to: 'leagues#find_character'
 end

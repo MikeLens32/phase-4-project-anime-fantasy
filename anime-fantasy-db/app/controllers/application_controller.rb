@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     include ActionController::Cookies
     include ActionController::Serialization
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-    rescue_from ActiveRecord::RecordInvalid, with: :no_route
+    rescue_from ActiveRecord::RecordNotFound, with: :no_route
     before_action :authorized
     wrap_parameters format: []
 
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
     private
 
     def current_user
-        @current_user ||= User.find_by(id: session[:user_id])
+        @current_user ||= User.find_by!(id: session[:user_id])
     end
 
     def authorized #attaching this to the before_action macro will have this guard clause run before all user actions

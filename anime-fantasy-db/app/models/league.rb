@@ -7,4 +7,9 @@ class League < ApplicationRecord
 
   # validates :name, presence: true, uniqueness: true
   
+  def self.find_character(league_character)
+    self.all.filter do |l|
+      l.characters.find {|c| c.name.downcase === league_character.downcase}
+    end
+  end
 end
