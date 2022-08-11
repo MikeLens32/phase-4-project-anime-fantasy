@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
     skip_before_action :authorized, only: [:index]
-    before_action :find_league, except: [:index, :create]
+    before_action :find_league, except: [:index, :create, :find_character]
 
     def index
         if params[:user_id]
@@ -36,10 +36,6 @@ class LeaguesController < ApplicationController
         head :no_content
     end
 
-    def find_character
-        leagues = League.find_character(params[:lc])
-        render json: leagues
-    end
 
     private
 

@@ -14,5 +14,5 @@ class CharactersController < ApplicationController
         character = Character.highest_health
         render json: character
     end
-    
+
 end
